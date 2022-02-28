@@ -12,6 +12,7 @@
 
 (function() {
   'use strict';
+  let $ = window.jQuery;
 
   function createResultDiv() {
     let div = document.createElement("div");
@@ -48,8 +49,21 @@
             break;
         }
       }
+
+      if(task.operational_area.toLowerCase().substring(0,4) == 'wire') {
+        task.operational_area = task.operational_area.substring(4);
+      }
+
       return task;
-    }).toArray();
+    }).toArray()
+      .filter(t => t.title !== undefined); // Remove tasks without title
+  }
+
+  function isTaskEqual(task1, task2) {
+    let attrs = ['title','operational_area', 'client', 'project'];
+    return attrs.every((attr) => {
+      return task1[attr] == task2[attr];
+    })
   }
 
   function parseSummary() {
@@ -57,11 +71,15 @@
     div.innerHTML = "";
     let tasks = parseTasks();
     let summary = [];
+
+    // Get unique tasks
+    tasks = tasks.filter((val, idx, self) => self.findIndex(t => isTaskEqual(val, t)) === idx)
+
     tasks.forEach((task) => {
       let operational_area = task.operational_area;
       summary[operational_area] = summary[operational_area] || [];
       let task_desc = task.title;
-      if(!['WM'].includes(task.client)) {
+      if(!['WM', 'Wiremaze'].includes(task.client)) {
         task_desc = `${task.client} - ${task_desc}`;
       }
       summary[operational_area].push(task_desc);
