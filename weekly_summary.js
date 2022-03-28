@@ -4,7 +4,7 @@
 // @version      0.1
 // @description  Simple userscript quickly makes a weekly summary
 // @author       Mikasonwar
-// @match        *://wmproject.wiremaze.com/sprints*
+// @match        *://wmproject.cityfy.pt/sprints*
 // @icon         https://github.com/Miguelwm/Miguelwm/raw/main/img/logo_wm.jpg
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js
 // @grant        none
