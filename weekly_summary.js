@@ -5,6 +5,7 @@
 // @description  Simple userscript quickly makes a weekly summary
 // @author       Mikasonwar
 // @match        *://wmproject.cityfy.pt/sprints*
+// @exclude      *://wmproject.cityfy.pt/sprints_scheduler
 // @icon         https://github.com/Miguelwm/Miguelwm/raw/main/img/logo_wm.jpg
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js
 // @grant        none
